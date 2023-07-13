@@ -1,9 +1,13 @@
 import React from "react";
 
 import PeopleCard from "../component/infoCards/peopleCard.jsx";
+import VehicleCard from "../component/infoCards/vehicleCard.jsx";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<PeopleCard/>
+	<div className="text-center container-fluid">
+		<div className="row">
+			<PeopleCard/>
+			<VehicleCard/>
+		</div>
 	</div>
 );
