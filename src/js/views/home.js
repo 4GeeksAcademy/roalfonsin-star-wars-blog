@@ -1,9 +1,15 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+
+import PeopleCard from "../component/infoCards/peopleCard.jsx";
+import VehicleCard from "../component/infoCards/vehicleCard.jsx";
+import PlanetCard from "../component/infoCards/planetCard.jsx";
 
 export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
+	<div className="text-center container-fluid">
+		<div className="row">
+			<PeopleCard/>
+			<VehicleCard/>
+			<PlanetCard/>
+		</div>
 	</div>
 );
