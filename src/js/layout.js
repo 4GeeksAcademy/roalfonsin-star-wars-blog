@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
 import ScrollToTop from "./component/scrollToTop";
 import Header from "./component/header.jsx";
@@ -13,17 +15,19 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Header/>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
+		<Provider store={store}>
+			<div>
+				<BrowserRouter basename={basename}>
+					<ScrollToTop>
+						<Header/>
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="*" element={<h1>Not found!</h1>} />
+						</Routes>
+					</ScrollToTop>
+				</BrowserRouter>
+			</div>
+		</Provider>
 	);
 };
 
