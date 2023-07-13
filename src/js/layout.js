@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import ScrollToTop from "./component/scrollToTop";
+import Header from "./component/header.jsx";
 
 import { Home } from "./views/home";
 
@@ -14,6 +16,7 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+					<Header/>
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
