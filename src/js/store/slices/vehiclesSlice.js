@@ -13,4 +13,4 @@ const vehiclesSlice = createSlice({
 });
 
 export const { addVehicle } = vehiclesSlice.actions;
-export default vehiclesSlice.reducer;
+export default vehiclesSlice;

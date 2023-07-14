@@ -2,15 +2,15 @@ import React from "react";
 
 import vehicleImage from "../../../img/vehicles/att.jpg";
 
-function VehicleCard(){
+function VehicleCard({newVehicleInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
 
     const vehicleInfo = {
-        name: "Sand Crawler",
-        vehicle_class: "assault walker",
-        crew: "1",
-        passengers: "10",
+        name: newVehicleInfo.name,
+        vehicle_class: newVehicleInfo.vehicle_class,
+        crew: newVehicleInfo.crew,
+        passengers: newVehicleInfo.passengers,
     };
 
     return(

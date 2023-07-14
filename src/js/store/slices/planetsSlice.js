@@ -13,4 +13,4 @@ const planetsSlice = createSlice({
 });
 
 export const { addPlanet } = planetsSlice.actions;
-export default planetsSlice.reducer;
+export default planetsSlice;

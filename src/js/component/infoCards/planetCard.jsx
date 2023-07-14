@@ -2,15 +2,15 @@ import React from "react";
 
 import planetImage from "../../../img/planets/hoth.jpg";
 
-function PlanetCard(){
+function PlanetCard({newPlanetInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
 
     const planetInfo = {
-        name: "Hoth",
-        diameter: "7200",
-        orbital_period: "549",
-        climate: "frozen",
+        name: newPlanetInfo.name,
+        diameter: newPlanetInfo.diameter,
+        orbital_period: newPlanetInfo.orbital_period,
+        climate: newPlanetInfo.climate,
     };
 
     return(
