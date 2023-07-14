@@ -5,7 +5,7 @@ import planetsSlice from "./slices/planetsSlice";
 
 const store = configureStore({
     reducer: {
-        characters: charactersSlice,
+        characters: charactersSlice.reducer,
         vehicles: vehiclesSlice,
         planets: planetsSlice,
     },

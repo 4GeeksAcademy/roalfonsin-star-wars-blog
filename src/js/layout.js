@@ -1,7 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import store from "./store/store";
-import { Provider } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import { addCharacter } from "./store/slices/charactersSlice";
 
 import ScrollToTop from "./component/scrollToTop";
 import Header from "./component/header.jsx";
@@ -10,14 +13,35 @@ import { Home } from "./views/home";
 
 //create your first component
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-	const basename = process.env.BASENAME || "";
+
+	const dispatch = useDispatch();
+	
+	useEffect( () => {
+		const fetchCharacters = async () => {
+			for (let index = 1; index<=10; index++){
+			    const characterUrl = "https://www.swapi.tech/api/people/"+index;
+				const response = await fetch(characterUrl);
+				const responseAsObject = await response.json();
+				const characterInformationToScrape = await responseAsObject.result.properties;
+				const characterInfo = {
+						name: characterInformationToScrape.name,
+						birth_year: characterInformationToScrape.birth_year,
+						gender: characterInformationToScrape.gender,
+						height: characterInformationToScrape.height,
+						skin_color: characterInformationToScrape.skin_color,
+						eye_color: characterInformationToScrape.eye_color
+				};
+				dispatch(addCharacter(characterInfo));
+			}
+			
+			
+		}
+		fetchCharacters();
+	},[]);
 
 	return (
-		<Provider store={store}>
 			<div>
-				<BrowserRouter basename={basename}>
+				<BrowserRouter>
 					<ScrollToTop>
 						<Header/>
 						<Routes>
@@ -27,7 +51,6 @@ const Layout = () => {
 					</ScrollToTop>
 				</BrowserRouter>
 			</div>
-		</Provider>
 	);
 };
 

@@ -13,4 +13,4 @@ const charactersSlice = createSlice({
 });
 
 export const { addCharacter } = charactersSlice.actions;
-export default charactersSlice.reducer;
+export default charactersSlice;

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useSelector } from "react-redux/es/hooks/useSelector.js";
+
 import PeopleCard from "../component/infoCards/peopleCard.jsx";
 import VehicleCard from "../component/infoCards/vehicleCard.jsx";
 import PlanetCard from "../component/infoCards/planetCard.jsx";
@@ -8,6 +10,9 @@ const listItemClasses = "list-group-item border-0";
 const listGroupClasses = "list-group list-group-horizontal overflow-auto position-relative";
 
 export function Home(){
+
+	const characters = useSelector((state) => state.characters);
+	console.log(characters);
 
 	return(
 		<div className="text-center container-fluid">
