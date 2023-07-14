@@ -12,25 +12,18 @@ const listGroupClasses = "list-group list-group-horizontal overflow-auto positio
 export function Home(){
 
 	const characters = useSelector((state) => state.characters);
-	console.log(characters);
 
 	return(
 		<div className="text-center container-fluid">
 			<div className="row my-4">
 				<h1 className="text-danger">Characters</h1>
 				<ul className={listGroupClasses}>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
-					<li className={listItemClasses}><PeopleCard/></li>
+					{characters.map(element => {
+						return (
+								<li className={listItemClasses} key={element.name}>
+									<PeopleCard characterInfo ={element}/>
+								</li>);	
+					})}
 				</ul>
 			</div>
 			<div className="row my-4">

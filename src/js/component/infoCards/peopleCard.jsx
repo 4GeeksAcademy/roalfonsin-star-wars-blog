@@ -2,15 +2,15 @@ import React from "react";
 
 import lukeImage from "../../../img/people/luke.jpg";
 
-function PeopleCard(){
+function PeopleCard({characterInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
 
     const peopleInfo = {
-        name: "Luke Skywalker",
-        gender: "Male",
-        eye_color: "Blue",
-        height: "172"
+        name: characterInfo.name,
+        gender: characterInfo.gender,
+        eye_color: characterInfo.eye_color,
+        height: characterInfo.height
     };
 
     return(
