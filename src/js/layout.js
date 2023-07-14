@@ -10,9 +10,11 @@ import { addVehicle } from "./store/slices/vehiclesSlice";
 
 import ScrollToTop from "./component/scrollToTop";
 import Header from "./component/header.jsx";
+import LearnMore from "./component/learnMore.jsx";
 
 import { Home } from "./views/home";
 import { string } from "prop-types";
+
 
 //create your first component
 const Layout = () => {
@@ -28,6 +30,7 @@ const Layout = () => {
 				const responseAsObject = await response.json();
 				const characterInformationToScrape = await responseAsObject.result.properties;
 				const characterInfo = {
+						id: "character"+characterInformationToScrape.name.replace(" ","_"),
 						name: characterInformationToScrape.name,
 						birth_year: characterInformationToScrape.birth_year,
 						gender: characterInformationToScrape.gender,
@@ -49,6 +52,7 @@ const Layout = () => {
 				const responseAsObject = await response.json();
 				const planetInformationToScrape = await responseAsObject.result.properties;
 				const planetInfo = {
+						id: "planet"+planetInformationToScrape.name.replace(" ","_"),
 						name: planetInformationToScrape.name,
 						diameter: planetInformationToScrape.diameter,
 						orbital_period: planetInformationToScrape.orbital_period,
@@ -71,6 +75,7 @@ const Layout = () => {
 				const responseAsObject = await response.json();
 				const vehicleInformationToScrape = await responseAsObject.result.properties;
 				const vehicleInfo = {
+						id: "vehicle"+vehicleInformationToScrape.name.replace(" ","_"),
 						name: vehicleInformationToScrape.name,
 						model: vehicleInformationToScrape.model,
 						crew: vehicleInformationToScrape.crew,
@@ -98,6 +103,7 @@ const Layout = () => {
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="*" element={<h1>Not found!</h1>} />
+							<Route path="/learnmore/:id" element ={<LearnMore/>} ></Route>
 						</Routes>
 					</ScrollToTop>
 				</BrowserRouter>
