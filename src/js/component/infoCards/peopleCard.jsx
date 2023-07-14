@@ -1,7 +1,5 @@
 import React from "react";
 
-import lukeImage from "../../../img/people/luke.jpg";
-
 function PeopleCard({characterInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
@@ -10,12 +8,13 @@ function PeopleCard({characterInfo}){
         name: characterInfo.name,
         gender: characterInfo.gender,
         eye_color: characterInfo.eye_color,
-        height: characterInfo.height
+        height: characterInfo.height,
+        imageUrl: characterInfo.imageUrl
     };
 
     return(
         <div className="card m-2" style={{width: "18rem"}}>
-            <img src={lukeImage} className="card-img-top"/>
+            <img src={peopleInfo.imageUrl} className="card-img-top"/>
             <div className="card-body">
                 <h5 className="card-title">{peopleInfo.name}</h5>
                 <ul className="list-group">

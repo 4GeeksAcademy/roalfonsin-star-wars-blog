@@ -12,6 +12,7 @@ import ScrollToTop from "./component/scrollToTop";
 import Header from "./component/header.jsx";
 
 import { Home } from "./views/home";
+import { string } from "prop-types";
 
 //create your first component
 const Layout = () => {
@@ -32,7 +33,8 @@ const Layout = () => {
 						gender: characterInformationToScrape.gender,
 						height: characterInformationToScrape.height,
 						skin_color: characterInformationToScrape.skin_color,
-						eye_color: characterInformationToScrape.eye_color
+						eye_color: characterInformationToScrape.eye_color,
+						imageUrl: "https://starwars-visualguide.com/assets/img/characters/"+ String(index) +".jpg"
 				};
 				dispatch(addCharacter(characterInfo));
 			}
@@ -41,7 +43,7 @@ const Layout = () => {
 		}
 
 		const fetchPlanets = async () => {
-			for (let index = 1; index<=10; index++){
+			for (let index = 2; index<=11; index++){
 			    const planetUrl = "https://www.swapi.tech/api/planets/"+index;
 				const response = await fetch(planetUrl);
 				const responseAsObject = await response.json();
@@ -52,7 +54,8 @@ const Layout = () => {
 						orbital_period: planetInformationToScrape.orbital_period,
 						climate: planetInformationToScrape.climate,
 						terrain: planetInformationToScrape.terrain,
-						gravity: planetInformationToScrape.gravity
+						gravity: planetInformationToScrape.gravity,
+						imageUrl: "https://starwars-visualguide.com/assets/img/planets/"+ String(index) +".jpg"
 				};
 				dispatch(addPlanet(planetInfo));
 			}
@@ -73,7 +76,8 @@ const Layout = () => {
 						crew: vehicleInformationToScrape.crew,
 						passengers: vehicleInformationToScrape.passengers,
 						vehicle_class: vehicleInformationToScrape.vehicle_class,
-						cargo_capacity: vehicleInformationToScrape.cargo_capacity
+						cargo_capacity: vehicleInformationToScrape.cargo_capacity,
+						imageUrl: "https://starwars-visualguide.com/assets/img/vehicles/" + index + ".jpg"
 				};
 				dispatch(addVehicle(vehicleInfo));
 			}

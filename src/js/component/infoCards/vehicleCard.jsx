@@ -1,7 +1,5 @@
 import React from "react";
 
-import vehicleImage from "../../../img/vehicles/att.jpg";
-
 function VehicleCard({newVehicleInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
@@ -11,11 +9,12 @@ function VehicleCard({newVehicleInfo}){
         vehicle_class: newVehicleInfo.vehicle_class,
         crew: newVehicleInfo.crew,
         passengers: newVehicleInfo.passengers,
+        imageUrl: newVehicleInfo.imageUrl
     };
 
     return(
         <div className="card m-2" style={{width: "18rem"}}>
-            <img src={vehicleImage} className="card-img-top"/>
+            <img src={vehicleInfo.imageUrl} className="card-img-top"/>
             <div className="card-body">
                 <h5 className="card-title">{vehicleInfo.name}</h5>
                 <ul className="list-group">

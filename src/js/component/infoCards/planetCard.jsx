@@ -1,7 +1,5 @@
 import React from "react";
 
-import planetImage from "../../../img/planets/hoth.jpg";
-
 function PlanetCard({newPlanetInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
@@ -11,11 +9,12 @@ function PlanetCard({newPlanetInfo}){
         diameter: newPlanetInfo.diameter,
         orbital_period: newPlanetInfo.orbital_period,
         climate: newPlanetInfo.climate,
+        imageUrl: newPlanetInfo.imageUrl
     };
 
     return(
         <div className="card m-2" style={{width: "18rem"}}>
-            <img src={planetImage} className="card-img-top"/>
+            <img src={planetInfo.imageUrl} className="card-img-top"/>
             <div className="card-body">
                 <h5 className="card-title">{planetInfo.name}</h5>
                 <ul className="list-group">
