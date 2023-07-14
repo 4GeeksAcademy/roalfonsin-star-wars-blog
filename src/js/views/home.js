@@ -12,6 +12,8 @@ const listGroupClasses = "list-group list-group-horizontal overflow-auto positio
 export function Home(){
 
 	const characters = useSelector((state) => state.characters);
+	const planets = useSelector((state) => state.planets);
+	const vehicles = useSelector((state) => state.vehicles);
 
 	return(
 		<div className="text-center container-fluid">
@@ -29,31 +31,23 @@ export function Home(){
 			<div className="row my-4">
 				<h1 className="text-danger">Vehicles</h1>
 				<ul className={listGroupClasses}>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
-					<li className={listItemClasses}><VehicleCard/></li>
+					{vehicles.map(element => {
+						return (
+								<li className={listItemClasses} key={element.name}>
+									<VehicleCard newVehicleInfo ={element}/>
+								</li>);	
+					})}
 				</ul>
 			</div>
 			<div className="row my-4">
 				<h1 className="text-danger">Planets</h1>
 				<ul className={listGroupClasses}>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
-					<li className={listItemClasses}><PlanetCard/></li>
+					{planets.map(element => {
+						return (
+								<li className={listItemClasses} key={element.name}>
+									<PlanetCard newPlanetInfo ={element}/>
+								</li>);	
+					})}
 				</ul>
 			</div>
 		</div>
