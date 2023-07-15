@@ -14,6 +14,8 @@ export function Home(){
 	const characters = useSelector((state) => state.characters);
 	const planets = useSelector((state) => state.planets);
 	const vehicles = useSelector((state) => state.vehicles);
+	const favorites = useSelector((state) => state.favorites);
+	console.log(favorites);
 
 	return(
 		<div className="text-center container-fluid">
