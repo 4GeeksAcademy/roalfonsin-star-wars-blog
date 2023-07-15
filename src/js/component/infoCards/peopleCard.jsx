@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PeopleCard({characterInfo}){
 
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
+    const learnMoreUrl = "/learnmore/:" + characterInfo.id;
 
     const peopleInfo = {
         name: characterInfo.name,
@@ -24,7 +26,7 @@ function PeopleCard({characterInfo}){
                 </ul>
             </div>
             <div className="card-footer d-flex justify-content-around">
-                <button type="button" className="btn btn-outline-primary">Learn More</button>
+                <Link to={learnMoreUrl}><button type="button" className="btn btn-outline-primary">Learn More</button></Link>
                 <button type="button" className="btn btn-outline-warning fw-bold">♡</button>
             </div>
         </div>

@@ -13,7 +13,6 @@ import Header from "./component/header.jsx";
 import LearnMore from "./component/learnMore.jsx";
 
 import { Home } from "./views/home";
-import { string } from "prop-types";
 
 
 //create your first component
@@ -68,7 +67,7 @@ const Layout = () => {
 		}
 
 		const fetchVehicles = async () => {
-			const vehiclesIndex = ["4", "6", "7", "8", "14", "16", "18", "19", "20", "24"]
+			const vehiclesIndex = ["4", "6", "7", "14", "16", "18", "19", "20", "24"]
 			for (let index of vehiclesIndex){
 			    const vehicleUrl = "https://www.swapi.tech/api/vehicles/"+index;
 				const response = await fetch(vehicleUrl);
