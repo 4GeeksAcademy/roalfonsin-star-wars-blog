@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import starWarsLogo from "../../img/logo.png";
 
+import { useDispatch, useSelector } from "react-redux";
+
 function Header (){
+
+    const dispatch = useDispatch();
+    const favorites = useSelector((state) => state.favorites);
+
     return (
         <div className="container-fluid bg-secondary-subtle">
             <div className="row border">
@@ -23,10 +29,16 @@ function Header (){
                             Favorites
                         </button>
                         <ul className="dropdown-menu">
-                            Falta agregar funcionalidad
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
+                            {favorites.map(element => {
+                                return (
+                                    <li key={element.id} className="m-1 border">
+                                        <div className="row">
+                                            <div className="col-10">{element.name}</div>
+                                            <div className="col-2"><button type="button" className="btn btn-outline-danger float-end">X</button></div>
+                                        </div>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
