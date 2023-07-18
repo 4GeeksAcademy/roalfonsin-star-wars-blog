@@ -1,14 +1,13 @@
 import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../context/appContext";
 import { Link } from "react-router-dom";
 import starWarsLogo from "../../img/logo.png";
 
-import { useDispatch, useSelector } from "react-redux";
-import { removeFavorite } from "../store/slices/favoritesSlice";
-
 function Header (){
 
-    const dispatch = useDispatch();
-    const favorites = useSelector((state) => state.favorites);
+    const context = useContext(AppContext);
+    let currentFaves = context.faves;
 
     return (
         <div className="container-fluid bg-secondary-subtle">
@@ -27,10 +26,10 @@ function Header (){
                 <div className="col d-flex justify-content-center align-items-center">
                     <div className="dropdown">
                         <button className="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Favorites <span className="bg-secondary">{favorites.length}</span>
+                            Favorites <span className="bg-secondary">{context.faves.length}</span>
                         </button>
                         <ul className="dropdown-menu">
-                            {favorites.map(element => {
+                            {currentFaves.map(element => {
                                 return (
                                     <li key={element.id} className="m-0 p-2 border-bottom">
                                         <div className="row">
@@ -39,7 +38,7 @@ function Header (){
                                                 <button
                                                     type="button"
                                                     className="btn btn-outline-danger float-end"
-                                                    onClick={ () => {dispatch(removeFavorite(element.id))}}
+                                                    onClick={ () => context.actions.removeFromFaves(element)}
                                                 >
                                                     X
                                                 </button>

@@ -1,13 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../../context/appContext";
 import { Link } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite } from "../../store/slices/favoritesSlice";
 
 function PeopleCard({characterInfo}){
 
-    const dispatch = useDispatch();
-    const favorites = useSelector((state) => state.favorites);
+    const context = useContext(AppContext);
+    const favorites = context.faves;
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
     const learnMoreUrl = "/learnmore/:" + characterInfo.id;
     
@@ -26,8 +25,8 @@ function PeopleCard({characterInfo}){
     };
 
     function addThisFavorite(){
-        if (!favorites.includes(characterInfo))
-            dispatch(addFavorite(characterInfo));
+        if (!context.faves.includes(characterInfo))
+            context.actions.addToFaves(characterInfo);
     }
 
     return(
