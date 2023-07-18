@@ -1,13 +1,12 @@
 import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../../context/appContext";
 import { Link } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite } from "../../store/slices/favoritesSlice";
 
 function PlanetCard({newPlanetInfo}){
     
-    const dispatch = useDispatch();
-    const favorites = useSelector((state) => state.favorites);
+    const context = useContext(AppContext);
+    const favorites = context.faves;
     const listElementsClasses = "list-group-item p-0 border-0 text-start";
     const learnMoreUrl = "/learnmore/:" + newPlanetInfo.id;
 
@@ -26,8 +25,8 @@ function PlanetCard({newPlanetInfo}){
     };
 
     function addThisFavorite(){
-        if (!favorites.includes(newPlanetInfo))
-            dispatch(addFavorite(newPlanetInfo));
+        if (!context.faves.includes(newPlanetInfo))
+            context.actions.addToFaves(newPlanetInfo);
     }
 
     return(

@@ -10,15 +10,17 @@ export const ContextWrapper = (props) => {
     const [actions] = useState({
         
         addToFaves: title => {
-            setFaves([...faves, title]);
+            setFaves(faves => [...faves, title]);
         },
 
         removeFromFaves: title => {
-            let newFaves = [];
-            for (element of faves)
-                if (element != title)
-                    newFaves.push(element);
-            setFaves(newFaves);
+            setFaves(faves => {
+                let newFaves = [];
+                for (let element of faves)
+                    if (element != title)
+                        newFaves.push(element);
+                return newFaves;
+            });
         }
 
     });
